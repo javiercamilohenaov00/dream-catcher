@@ -25,7 +25,7 @@ app.use(express.static(join(__dirname, 'public')));
 
 // health endpoint
 
-app.get('health', async (req,body)=>{
+app.get('/health', async (req,body)=>{
 
   try{
 
