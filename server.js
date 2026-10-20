@@ -25,20 +25,20 @@ app.use(express.static(join(__dirname, 'public')));
 
 // health endpoint
 
-app.get('/health', async (req,body)=>{
+app.get('/health', async (req,res)=>{
 
   try{
 
     await pool.query('SELECT 1');
 
-    resizeBy.json({
+    res.json({
       status: 'ok',
       db: 'connected',
       uptime: process.uptime()
     });
 
   }catch(err){
-    res.status(503).join({
+    res.status(503).json({
       status: 'error',
       db: "disconnected",
       uptime: process.uptime()
